@@ -3,7 +3,7 @@ import java.util.Random;
 public class Bubbling {
     public static void main(String[] args) {
         int[] arr = new int[10];
-        Random r = new Random(1);
+        Random r = new Random();
 
         //随机初始化数组的值
         for (int i = 0; i < 10; i++) {

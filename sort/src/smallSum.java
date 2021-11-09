@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class smallSum {
     public static void main(String[] args) {
 //        int[] arr = newarr(20, 20);
@@ -6,12 +8,12 @@ public class smallSum {
 //        System.out.println(smallsum);
 
         boolean result = true;
-        int size = 10;
-        int value = 20;
+        int size = 500;
+        int value = 200;
         for (int a = 0; a < 50000; a++) {
             int[] arr = newarr(size, value);
-            int Nomal = nomal(arr);             //绝对正确的解
             int SmallSum = smallsum(arr);       //验证的递归归并解题
+            int Nomal = nomal(arr);             //绝对正确的解
             if (SmallSum != Nomal) {
                 System.out.println("异常结果");
                 printarr(arr);
@@ -29,7 +31,12 @@ public class smallSum {
         if (arr == null && arr.length < 2) {
             return 0;
         }
-        return mergesort(arr, 0, arr.length - 1);
+        //复制数组保证原数组不会受到影响
+        int[] a=new int[arr.length];
+        for (int i=0;i<arr.length;i++){
+            a[i]=arr[i];
+        }
+        return mergesort(a, 0, a.length - 1);
     }
 
     public static int mergesort(int[] arr, int L, int R) {
